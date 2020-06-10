@@ -1,0 +1,48 @@
+server:
+  port: 9080
+  servlet:
+    context-path: /elink
+
+############################################ACTIVE消息队列参数########################################
+spring:
+  activemq:
+    broker-url: tcp://172.16.12.168:61616
+    password: admin
+    user: admin
+    packages:
+      trust-all: true
+
+############################################REDIS参数########################################
+  redis:
+    database: 0
+    host: 192.168.240.210
+    lettuce:
+      pool:
+        max-active: 8
+        max-idle: 10
+        max-wait: 1ms
+        min-idle: 5
+      shutdown-timeout: 100ms
+    port: 6379
+
+################################################ELink相关参数####################################
+e-link:
+  agent-id: 1000010
+  secret: TS5QYJE-j_PNgJNmm5-s1THMeqpYkztTOEXCBCItpYk
+  crop-id: ww4692fcac4925cf0f
+  e-link-host: http://121.201.126.18:8801
+  ep-host: http://10.4.2.152
+  ep-home-uri: /h5app
+  access-token-uri: /cgi-bin/gettoken
+  get-jsapi-ticket: /cgi-bin/get_jsapi_ticket
+  send-message-uri: /cgi-bin/message/send
+  auth-param:
+    oauth-uri: /connect/oauth2/authorize?appid=%s&redirect_uri=%s&response_type=code&scope=%s&agentid=%s&state=STATE#wechat_redirect
+    redirect-uri: /ep/page
+    user-info-uri: /cgi-bin/user/getuserinfo
+    user-detail-uri: /cgi-bin/user/getuserdetail
+
+################################################LOG参数####################################
+logging:
+  level:
+    root: info
